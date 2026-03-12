@@ -38,16 +38,6 @@ const metrics = [
   { label: "Motion", value: "Live" },
 ];
 const marqueeItems = [...navItems, ...navItems];
-const pixelSprites = [
-  { variant: "sprite-knight", top: "8%", left: "6%", delay: 0, duration: 5.5, scale: 0.95 },
-  { variant: "sprite-mage", top: "18%", left: "82%", delay: 1.2, duration: 6.2, scale: 1.05 },
-  { variant: "sprite-rogue", top: "34%", left: "12%", delay: 0.7, duration: 5.8, scale: 0.9 },
-  { variant: "sprite-bot", top: "42%", left: "88%", delay: 1.8, duration: 6.4, scale: 1 },
-  { variant: "sprite-knight", top: "58%", left: "76%", delay: 0.4, duration: 5.6, scale: 0.85 },
-  { variant: "sprite-mage", top: "66%", left: "10%", delay: 1.4, duration: 6.1, scale: 1 },
-  { variant: "sprite-rogue", top: "79%", left: "86%", delay: 0.9, duration: 5.9, scale: 0.92 },
-  { variant: "sprite-bot", top: "88%", left: "18%", delay: 1.6, duration: 6.3, scale: 1.08 },
-];
 
 const sectionReveal = {
   initial: { opacity: 0, y: 40 },
@@ -87,7 +77,6 @@ export default function App() {
         onToggleTheme={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
       />
       <main className="relative z-10 overflow-hidden">
-        <PixelSprites />
         <Hero />
         <About />
         <Skills />
@@ -151,27 +140,6 @@ function Navbar({ theme, themeLabel, onToggleTheme }) {
   );
 }
 
-function PixelSprites() {
-  return (
-    <div aria-hidden="true" className="pixel-sprite-field">
-      {pixelSprites.map((sprite, index) => (
-        <motion.div
-          key={`${sprite.variant}-${index}`}
-          className={`pixel-sprite ${sprite.variant}`}
-          style={{ top: sprite.top, left: sprite.left, scale: sprite.scale }}
-          animate={{ y: [0, -10, 0], x: [0, 4, 0] }}
-          transition={{
-            duration: sprite.duration,
-            delay: sprite.delay,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
 function Hero() {
   return (
     <section id="home" className="relative flex min-h-screen items-center justify-center px-6 pb-16 pt-44">
@@ -188,7 +156,7 @@ function Hero() {
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
             >
-              Player One
+              Secure Session
             </motion.span>
             <div className="hero-copy-wrap">
               <div className="hero-signal" />
@@ -232,8 +200,8 @@ function Hero() {
             className="arena-card"
           >
             <div className="hud-line">
-              <span>ROUTE</span>
-              <strong>CAREER MAP</strong>
+              <span>SCAN</span>
+              <strong>THREAT SURFACE</strong>
             </div>
             <div className="career-map" role="img" aria-label="Carte stylisée avec un point de départ et un chemin vers un objectif backend">
               <div className="map-grid" />
@@ -252,8 +220,8 @@ function Hero() {
                 <p className="mt-2 text-lg font-semibold">Construire des expériences web fluides et mémorables.</p>
               </div>
               <div>
-                <p className="text-sm uppercase tracking-[0.24em] text-[var(--text-muted)]">Style</p>
-                <p className="mt-2 text-lg font-semibold">Interfaces modernes, animations nettes, performances solides.</p>
+                <p className="text-sm uppercase tracking-[0.24em] text-[var(--text-muted)]">Signature</p>
+                <p className="mt-2 text-lg font-semibold">Interfaces cyber, code net, lisibilité forte en clair comme en sombre.</p>
               </div>
               <div className="flex flex-wrap gap-3 pt-2">
                 {highlights.map((item) => (
@@ -522,10 +490,6 @@ function Contact() {
           >
             {isSubmitting ? "Envoi..." : "Envoyer le message"}
           </button>
-          <p className="text-sm leading-6 text-[var(--text-muted)]">
-            Configurez <code>VITE_WEB3FORMS_ACCESS_KEY</code> pour recevoir les messages directement, ou{" "}
-            <code>VITE_CONTACT_EMAIL</code> en secours pour ouvrir la messagerie.
-          </p>
         </motion.form>
       </div>
     </section>

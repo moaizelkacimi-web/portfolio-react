@@ -4,40 +4,40 @@
 
 :root {
   color-scheme: dark;
-  --bg-primary: #050b16;
-  --bg-secondary: rgba(10, 22, 42, 0.72);
-  --surface-nav: rgba(4, 10, 20, 0.7);
-  --surface-card: rgba(8, 16, 31, 0.66);
-  --surface-raised: rgba(13, 27, 49, 0.92);
-  --text-primary: #edf7ff;
-  --text-secondary: #d7ebfb;
-  --text-muted: #8faabd;
-  --accent: #63f3ff;
-  --accent-strong: #258dff;
-  --accent-pink: #ff5ae0;
-  --border-soft: rgba(109, 155, 189, 0.18);
-  --border-strong: rgba(99, 243, 255, 0.42);
-  --shadow-glow: 0 0 34px rgba(99, 243, 255, 0.18);
-  --shadow-pink: 0 0 40px rgba(255, 90, 224, 0.12);
+  --bg-primary: #06110c;
+  --bg-secondary: rgba(10, 26, 19, 0.78);
+  --surface-nav: rgba(6, 15, 11, 0.84);
+  --surface-card: rgba(7, 18, 13, 0.78);
+  --surface-raised: rgba(10, 24, 18, 0.94);
+  --text-primary: #eafbf1;
+  --text-secondary: #c8f0d7;
+  --text-muted: #7ca38c;
+  --accent: #6eff9a;
+  --accent-strong: #23d18b;
+  --accent-pink: #6be7ff;
+  --border-soft: rgba(110, 255, 154, 0.14);
+  --border-strong: rgba(110, 255, 154, 0.38);
+  --shadow-glow: 0 0 34px rgba(110, 255, 154, 0.14);
+  --shadow-pink: 0 0 38px rgba(107, 231, 255, 0.08);
 }
 
 :root[data-theme="light"] {
   color-scheme: light;
-  --bg-primary: #edf6ff;
-  --bg-secondary: rgba(255, 255, 255, 0.7);
-  --surface-nav: rgba(255, 255, 255, 0.78);
-  --surface-card: rgba(255, 255, 255, 0.72);
-  --surface-raised: rgba(245, 251, 255, 0.95);
-  --text-primary: #102033;
-  --text-secondary: #21384f;
-  --text-muted: #587086;
-  --accent: #018cf5;
-  --accent-strong: #005cff;
-  --accent-pink: #ff4ab6;
-  --border-soft: rgba(19, 75, 121, 0.12);
-  --border-strong: rgba(1, 140, 245, 0.32);
-  --shadow-glow: 0 0 26px rgba(1, 140, 245, 0.16);
-  --shadow-pink: 0 0 30px rgba(255, 74, 182, 0.08);
+  --bg-primary: #edf7f1;
+  --bg-secondary: rgba(255, 255, 255, 0.74);
+  --surface-nav: rgba(248, 252, 249, 0.9);
+  --surface-card: rgba(255, 255, 255, 0.82);
+  --surface-raised: rgba(248, 253, 250, 0.96);
+  --text-primary: #0d2017;
+  --text-secondary: #1c382a;
+  --text-muted: #557465;
+  --accent: #006d43;
+  --accent-strong: #00a96b;
+  --accent-pink: #0f86a8;
+  --border-soft: rgba(0, 109, 67, 0.12);
+  --border-strong: rgba(0, 109, 67, 0.28);
+  --shadow-glow: 0 0 26px rgba(0, 109, 67, 0.12);
+  --shadow-pink: 0 0 28px rgba(15, 134, 168, 0.08);
 }
 
 html {
@@ -46,11 +46,11 @@ html {
 
 body {
   margin: 0;
-  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+  font-family: "IBM Plex Mono", "Consolas", "Courier New", monospace;
   background:
-    radial-gradient(circle at 15% 20%, rgba(99, 243, 255, 0.14), transparent 24%),
-    radial-gradient(circle at 85% 15%, rgba(255, 90, 224, 0.12), transparent 26%),
-    linear-gradient(180deg, rgba(9, 16, 31, 0.12), transparent 26%),
+    radial-gradient(circle at 12% 18%, rgba(110, 255, 154, 0.12), transparent 22%),
+    radial-gradient(circle at 84% 14%, rgba(107, 231, 255, 0.08), transparent 20%),
+    linear-gradient(180deg, rgba(17, 255, 136, 0.035), transparent 28%),
     var(--bg-primary);
   color: var(--text-primary);
 }
@@ -65,166 +65,11 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: #04111f;
+  color: #04110b;
 }
 
 .app-shell {
   position: relative;
-}
-
-.pixel-sprite-field {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.pixel-sprite {
-  --pixel: 6px;
-  position: absolute;
-  width: calc(var(--pixel) * 8);
-  height: calc(var(--pixel) * 10);
-  opacity: 0.72;
-  filter: drop-shadow(0 0 12px rgba(99, 243, 255, 0.25));
-}
-
-.pixel-sprite::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: var(--pixel);
-  height: var(--pixel);
-}
-
-.sprite-knight::before {
-  background: #dceeff;
-  box-shadow:
-    calc(var(--pixel) * 2) 0 #dceeff,
-    calc(var(--pixel) * 3) 0 #dceeff,
-    calc(var(--pixel) * 4) 0 #dceeff,
-    var(--pixel) var(--pixel) #dceeff,
-    calc(var(--pixel) * 2) var(--pixel) #18263b,
-    calc(var(--pixel) * 3) var(--pixel) #dceeff,
-    calc(var(--pixel) * 4) var(--pixel) #18263b,
-    calc(var(--pixel) * 5) var(--pixel) #dceeff,
-    var(--pixel) calc(var(--pixel) * 2) #dceeff,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 2) #4fd7ff,
-    calc(var(--pixel) * 3) calc(var(--pixel) * 2) #dceeff,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 2) #4fd7ff,
-    calc(var(--pixel) * 5) calc(var(--pixel) * 2) #dceeff,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 3) #dceeff,
-    calc(var(--pixel) * 3) calc(var(--pixel) * 3) #dceeff,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 3) #dceeff,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 4) #258dff,
-    calc(var(--pixel) * 3) calc(var(--pixel) * 4) #258dff,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 4) #258dff,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 5) #258dff,
-    calc(var(--pixel) * 3) calc(var(--pixel) * 5) #258dff,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 5) #258dff,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 6) #18263b,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 6) #18263b,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 7) #dceeff,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 7) #dceeff;
-}
-
-.sprite-mage::before {
-  background: #ffddf7;
-  box-shadow:
-    calc(var(--pixel) * 2) 0 #ffddf7,
-    calc(var(--pixel) * 3) 0 #ffddf7,
-    calc(var(--pixel) * 4) 0 #ffddf7,
-    var(--pixel) var(--pixel) #7a2f8f,
-    calc(var(--pixel) * 2) var(--pixel) #ffddf7,
-    calc(var(--pixel) * 3) var(--pixel) #ffddf7,
-    calc(var(--pixel) * 4) var(--pixel) #ffddf7,
-    calc(var(--pixel) * 5) var(--pixel) #7a2f8f,
-    var(--pixel) calc(var(--pixel) * 2) #7a2f8f,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 2) #18263b,
-    calc(var(--pixel) * 3) calc(var(--pixel) * 2) #ffddf7,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 2) #18263b,
-    calc(var(--pixel) * 5) calc(var(--pixel) * 2) #7a2f8f,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 3) #ff4ab6,
-    calc(var(--pixel) * 3) calc(var(--pixel) * 3) #ff4ab6,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 3) #ff4ab6,
-    var(--pixel) calc(var(--pixel) * 4) #7a2f8f,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 4) #7a2f8f,
-    calc(var(--pixel) * 3) calc(var(--pixel) * 4) #7a2f8f,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 4) #7a2f8f,
-    calc(var(--pixel) * 5) calc(var(--pixel) * 4) #7a2f8f,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 5) #a67cff,
-    calc(var(--pixel) * 3) calc(var(--pixel) * 5) #a67cff,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 5) #a67cff,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 6) #18263b,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 6) #18263b,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 7) #ffddf7,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 7) #ffddf7;
-}
-
-.sprite-rogue::before {
-  background: #d7ffe3;
-  box-shadow:
-    calc(var(--pixel) * 2) 0 #d7ffe3,
-    calc(var(--pixel) * 3) 0 #d7ffe3,
-    calc(var(--pixel) * 4) 0 #d7ffe3,
-    var(--pixel) var(--pixel) #1f4f39,
-    calc(var(--pixel) * 2) var(--pixel) #d7ffe3,
-    calc(var(--pixel) * 3) var(--pixel) #d7ffe3,
-    calc(var(--pixel) * 4) var(--pixel) #d7ffe3,
-    calc(var(--pixel) * 5) var(--pixel) #1f4f39,
-    var(--pixel) calc(var(--pixel) * 2) #1f4f39,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 2) #18263b,
-    calc(var(--pixel) * 3) calc(var(--pixel) * 2) #d7ffe3,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 2) #18263b,
-    calc(var(--pixel) * 5) calc(var(--pixel) * 2) #1f4f39,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 3) #52d48b,
-    calc(var(--pixel) * 3) calc(var(--pixel) * 3) #52d48b,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 3) #52d48b,
-    var(--pixel) calc(var(--pixel) * 4) #1f4f39,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 4) #1f4f39,
-    calc(var(--pixel) * 3) calc(var(--pixel) * 4) #1f4f39,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 4) #1f4f39,
-    calc(var(--pixel) * 5) calc(var(--pixel) * 4) #1f4f39,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 5) #52d48b,
-    calc(var(--pixel) * 3) calc(var(--pixel) * 5) #52d48b,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 5) #52d48b,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 6) #18263b,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 6) #18263b,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 7) #d7ffe3,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 7) #d7ffe3;
-}
-
-.sprite-bot::before {
-  background: #f1f6ff;
-  box-shadow:
-    calc(var(--pixel) * 2) 0 #f1f6ff,
-    calc(var(--pixel) * 3) 0 #f1f6ff,
-    calc(var(--pixel) * 4) 0 #f1f6ff,
-    var(--pixel) var(--pixel) #92a8c4,
-    calc(var(--pixel) * 2) var(--pixel) #92a8c4,
-    calc(var(--pixel) * 3) var(--pixel) #92a8c4,
-    calc(var(--pixel) * 4) var(--pixel) #92a8c4,
-    calc(var(--pixel) * 5) var(--pixel) #92a8c4,
-    var(--pixel) calc(var(--pixel) * 2) #92a8c4,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 2) #18263b,
-    calc(var(--pixel) * 3) calc(var(--pixel) * 2) #63f3ff,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 2) #18263b,
-    calc(var(--pixel) * 5) calc(var(--pixel) * 2) #92a8c4,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 3) #92a8c4,
-    calc(var(--pixel) * 3) calc(var(--pixel) * 3) #92a8c4,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 3) #92a8c4,
-    var(--pixel) calc(var(--pixel) * 4) #258dff,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 4) #258dff,
-    calc(var(--pixel) * 3) calc(var(--pixel) * 4) #258dff,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 4) #258dff,
-    calc(var(--pixel) * 5) calc(var(--pixel) * 4) #258dff,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 5) #92a8c4,
-    calc(var(--pixel) * 3) calc(var(--pixel) * 5) #92a8c4,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 5) #92a8c4,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 6) #18263b,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 6) #18263b,
-    calc(var(--pixel) * 2) calc(var(--pixel) * 7) #f1f6ff,
-    calc(var(--pixel) * 4) calc(var(--pixel) * 7) #f1f6ff;
 }
 
 .marquee-bar {
@@ -253,7 +98,7 @@ body {
   color: var(--text-secondary);
   text-decoration: none;
   font-size: 0.78rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -281,8 +126,8 @@ body {
 .metric-card {
   border: 1px solid var(--border-soft);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 55%),
-    linear-gradient(120deg, rgba(99, 243, 255, 0.04), transparent 40%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 58%),
+    linear-gradient(135deg, rgba(110, 255, 154, 0.045), transparent 42%),
     var(--surface-card);
   backdrop-filter: blur(18px);
   box-shadow: var(--shadow-glow), var(--shadow-pink);
@@ -291,7 +136,7 @@ body {
 .hero-panel {
   position: relative;
   overflow: hidden;
-  border-radius: 2rem;
+  border-radius: 1.5rem;
   padding: 2rem;
 }
 
@@ -299,9 +144,20 @@ body {
   content: "";
   position: absolute;
   inset: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 1.5rem;
+  border: 1px solid rgba(110, 255, 154, 0.08);
+  border-radius: 1rem;
   pointer-events: none;
+}
+
+.hero-panel::after {
+  content: "root@portfolio:~$ init --profile";
+  position: absolute;
+  top: 1rem;
+  right: 1.1rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  text-transform: uppercase;
 }
 
 .hero-grid {
@@ -321,7 +177,7 @@ body {
 .content-panel,
 .project-card,
 .arena-card {
-  border-radius: 1.75rem;
+  border-radius: 1.35rem;
   padding: 1.75rem;
 }
 
@@ -343,7 +199,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(125deg, transparent 20%, rgba(255, 255, 255, 0.08) 50%, transparent 80%);
+  background: linear-gradient(125deg, transparent 24%, rgba(255, 255, 255, 0.06) 50%, transparent 76%);
   transform: translateX(-120%);
   animation: sweep 9s linear infinite;
   pointer-events: none;
@@ -359,7 +215,7 @@ body {
   inset: auto -18% -35% auto;
   width: 11rem;
   height: 11rem;
-  background: radial-gradient(circle, rgba(99, 243, 255, 0.28), transparent 70%);
+  background: radial-gradient(circle, rgba(110, 255, 154, 0.22), transparent 70%);
 }
 
 .project-card:hover,
@@ -382,8 +238,8 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  border-radius: 999px;
-  font-weight: 800;
+  border-radius: 0.8rem;
+  font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   text-decoration: none;
@@ -397,7 +253,7 @@ body {
 
 .theme-toggle {
   border: 1px solid var(--border-strong);
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--text-primary);
   padding: 0.8rem 1rem;
 }
@@ -409,14 +265,14 @@ body {
 
 .action-primary {
   background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-  color: #02111c;
+  color: #04110b;
   box-shadow: var(--shadow-glow);
 }
 
 .action-secondary {
   border: 1px solid var(--border-strong);
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .theme-toggle:hover,
@@ -433,18 +289,18 @@ body {
   border-radius: 999px;
   padding: 0.55rem 0.9rem;
   font-size: 0.76rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 .badge-game {
-  background: linear-gradient(90deg, rgba(99, 243, 255, 0.12), rgba(255, 90, 224, 0.1));
+  background: linear-gradient(90deg, rgba(110, 255, 154, 0.12), rgba(107, 231, 255, 0.08));
   color: var(--accent);
 }
 
 .stat-pill {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--text-secondary);
 }
 
@@ -471,13 +327,13 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
-  border-radius: 1.4rem;
+  border-radius: 1rem;
   padding: 1rem 1.1rem;
 }
 
 .metric-card span {
   font-size: 0.75rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -485,7 +341,7 @@ body {
 
 .metric-card strong {
   font-size: 1.3rem;
-  font-weight: 900;
+  font-weight: 800;
   color: var(--text-primary);
 }
 
@@ -496,7 +352,7 @@ body {
   border-bottom: 1px solid var(--border-soft);
   padding-bottom: 1rem;
   font-size: 0.78rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -507,11 +363,11 @@ body {
   margin: 1.5rem auto 0;
   width: min(17rem, 100%);
   min-height: 18rem;
-  border-radius: 1.75rem;
-  border: 1px solid rgba(99, 243, 255, 0.22);
+  border-radius: 1.35rem;
+  border: 1px solid rgba(110, 255, 154, 0.22);
   background:
-    radial-gradient(circle at 50% 30%, rgba(99, 243, 255, 0.18), transparent 45%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent);
+    radial-gradient(circle at 50% 30%, rgba(110, 255, 154, 0.12), transparent 45%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent);
   overflow: hidden;
 }
 
@@ -521,15 +377,15 @@ body {
   position: absolute;
   inset: auto 0 2.25rem;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(99, 243, 255, 0.18), transparent);
-} 
+  background: linear-gradient(90deg, transparent, rgba(110, 255, 154, 0.18), transparent);
+}
 
 .career-map::after {
   inset: 1rem auto auto 1rem;
   width: 4rem;
   height: 4rem;
-  border-top: 1px solid rgba(99, 243, 255, 0.18);
-  border-left: 1px solid rgba(99, 243, 255, 0.18);
+  border-top: 1px solid rgba(110, 255, 154, 0.18);
+  border-left: 1px solid rgba(110, 255, 154, 0.18);
   background: none;
 }
 
@@ -560,8 +416,8 @@ body {
   bottom: 3rem;
   width: 0.95rem;
   height: 0.95rem;
-  background: #ff4d4d;
-  box-shadow: 0 0 18px rgba(255, 77, 77, 0.45);
+  background: #ff6b6b;
+  box-shadow: 0 0 18px rgba(255, 107, 107, 0.35);
 }
 
 .route-end {
@@ -579,7 +435,7 @@ body {
   top: 2.7rem;
   width: 1.75rem;
   height: 1.75rem;
-  border: 1px solid rgba(255, 90, 224, 0.45);
+  border: 1px solid rgba(107, 231, 255, 0.4);
   animation: destinationPulse 2s ease-in-out infinite;
 }
 
@@ -643,9 +499,9 @@ body {
 
 .input-game {
   width: 100%;
-  border-radius: 1.1rem;
+  border-radius: 0.95rem;
   border: 1px solid var(--border-soft);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.03);
   padding: 1rem 1.1rem;
   color: var(--text-primary);
   outline: none;
@@ -659,7 +515,7 @@ body {
 .input-game:focus {
   border-color: var(--border-strong);
   box-shadow: var(--shadow-glow);
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .ambient,
@@ -669,8 +525,8 @@ body {
 }
 
 .ambient {
-  filter: blur(48px);
-  opacity: 0.48;
+  filter: blur(52px);
+  opacity: 0.4;
   animation: drift 12s ease-in-out infinite;
 }
 
@@ -679,7 +535,7 @@ body {
   left: -8%;
   width: 24rem;
   height: 24rem;
-  background: rgba(99, 243, 255, 0.12);
+  background: rgba(110, 255, 154, 0.08);
 }
 
 .ambient-two {
@@ -687,7 +543,7 @@ body {
   top: 35%;
   width: 28rem;
   height: 28rem;
-  background: rgba(37, 141, 255, 0.12);
+  background: rgba(0, 169, 107, 0.08);
   animation-delay: -4s;
 }
 
@@ -696,12 +552,12 @@ body {
   bottom: -10%;
   width: 22rem;
   height: 22rem;
-  background: rgba(255, 90, 224, 0.1);
+  background: rgba(107, 231, 255, 0.07);
   animation-delay: -8s;
 }
 
 .orbital {
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(110, 255, 154, 0.06);
 }
 
 .orbital-one {
@@ -724,8 +580,8 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(110, 255, 154, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(110, 255, 154, 0.08) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.72) 15%, rgba(0, 0, 0, 0.72) 85%, transparent);
   opacity: 0.16;
@@ -734,17 +590,17 @@ body {
 .scanline-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent, rgba(99, 243, 255, 0.05), transparent);
+  background: linear-gradient(180deg, transparent, rgba(110, 255, 154, 0.04), transparent);
   background-size: 100% 12px;
-  opacity: 0.1;
+  opacity: 0.08;
 }
 
 .noise-overlay {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 0.6px, transparent 0.6px);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 0.6px, transparent 0.6px);
   background-size: 12px 12px;
-  opacity: 0.05;
+  opacity: 0.04;
 }
 
 @keyframes marqueeScroll {
@@ -785,30 +641,6 @@ body {
   }
 }
 
-@keyframes pulseDot {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.35);
-    opacity: 0.72;
-  }
-}
-
-@keyframes pingPulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.5);
-    opacity: 0.45;
-  }
-}
-
 @keyframes routeFlow {
   0%,
   100% {
@@ -838,10 +670,6 @@ body {
     display: none;
   }
 
-  .pixel-sprite {
-    opacity: 0.52;
-  }
-
   .career-map {
     min-height: 16rem;
   }
@@ -866,6 +694,12 @@ body {
     padding: 1.25rem;
   }
 
+  .hero-panel::after {
+    position: static;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
   .content-panel,
   .project-card,
   .arena-card {
@@ -883,10 +717,5 @@ body {
 
   .timeline-dot::after {
     display: none;
-  }
-
-  .pixel-sprite {
-    --pixel: 4px;
-    opacity: 0.38;
   }
 }
