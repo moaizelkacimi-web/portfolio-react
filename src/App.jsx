@@ -1,6 +1,10 @@
 ﻿import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 
+const contactEmail = import.meta.env.VITE_CONTACT_EMAIL?.trim() || "";
+const web3FormsAccessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY?.trim() || "";
+const web3FormsEndpoint = "https://api.web3forms.com/submit";
+
 const navItems = [
   { href: "#about", label: "À propos" },
   { href: "#skills", label: "Compétences" },
@@ -380,17 +384,148 @@ function Education() {
 }
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState({ type: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((current) => ({ ...current, [name]: value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setStatus({ type: "error", message: "Remplissez le nom, l'email et le message." });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setStatus({ type: "", message: "" });
+
+    try {
+      if (web3FormsAccessKey) {
+        const response = await fetch(web3FormsEndpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            access_key: web3FormsAccessKey,
+            subject: `Nouveau message portfolio de ${formData.name.trim()}`,
+            from_name: formData.name.trim(),
+            name: formData.name.trim(),
+            email: formData.email.trim(),
+            message: formData.message.trim(),
+            botcheck: "",
+          }),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error("web3forms-error");
+        }
+
+        setFormData({ name: "", email: "", message: "" });
+        setStatus({ type: "success", message: "Message envoyé. Je le recevrai directement." });
+        return;
+      }
+
+      if (contactEmail) {
+        const subject = encodeURIComponent(`Nouveau message de ${formData.name.trim()}`);
+        const body = encodeURIComponent(
+          `Nom: ${formData.name.trim()}\nEmail: ${formData.email.trim()}\n\nMessage:\n${formData.message.trim()}`,
+        );
+
+        window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+        setStatus({
+          type: "success",
+          message: "Le client email s'ouvre pour envoyer le message vers votre adresse.",
+        });
+        return;
+      }
+
+      setStatus({
+        type: "error",
+        message: "Configurez VITE_WEB3FORMS_ACCESS_KEY ou VITE_CONTACT_EMAIL pour recevoir les messages.",
+      });
+    } catch {
+      setStatus({
+        type: "error",
+        message: "Échec de l'envoi. Vérifiez la configuration du contact.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="section-wrap">
       <div className="mx-auto max-w-3xl px-6">
         <SectionTitle center prefix="05" title="Me Contacter" accent="connexion" />
-        <motion.form {...sectionReveal} className="content-panel neon-frame mt-12 space-y-4">
-          <input type="text" placeholder="Votre nom" className="input-game" />
-          <input type="email" placeholder="Votre email" className="input-game" />
-          <textarea rows="5" placeholder="Votre message" className="input-game resize-none" />
-          <button type="button" className="action-primary w-full justify-center">
-            Envoyer le message
+        <motion.form
+          {...sectionReveal}
+          className="content-panel neon-frame mt-12 space-y-4"
+          onSubmit={handleSubmit}
+        >
+          <input
+            type="text"
+            name="name"
+            placeholder="Votre nom"
+            className="input-game"
+            value={formData.name}
+            onChange={handleChange}
+            autoComplete="name"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Votre email"
+            className="input-game"
+            value={formData.email}
+            onChange={handleChange}
+            autoComplete="email"
+          />
+          <textarea
+            rows="5"
+            name="message"
+            placeholder="Votre message"
+            className="input-game resize-none"
+            value={formData.message}
+            onChange={handleChange}
+          />
+          <input
+            type="checkbox"
+            name="botcheck"
+            className="hidden"
+            tabIndex="-1"
+            autoComplete="off"
+            aria-hidden="true"
+          />
+          {status.message ? (
+            <p
+              className={
+                status.type === "success" ? "text-sm text-emerald-400" : "text-sm text-rose-400"
+              }
+            >
+              {status.message}
+            </p>
+          ) : null}
+          <button
+            type="submit"
+            className="action-primary w-full justify-center"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Envoi..." : "Envoyer le message"}
           </button>
+          <p className="text-sm leading-6 text-[var(--text-muted)]">
+            Configurez <code>VITE_WEB3FORMS_ACCESS_KEY</code> pour recevoir les messages directement, ou{" "}
+            <code>VITE_CONTACT_EMAIL</code> en secours pour ouvrir la messagerie.
+          </p>
         </motion.form>
       </div>
     </section>
