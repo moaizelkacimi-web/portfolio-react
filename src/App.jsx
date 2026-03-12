@@ -272,8 +272,8 @@ function About() {
       <motion.div {...sectionReveal} className="content-panel neon-frame mx-auto max-w-4xl text-center">
         <SectionTitle prefix="01" title="À propos" accent="profil" />
         <p className="text-lg leading-8 text-[var(--text-muted)] md:text-xl">
-          Étudiant passionné en développement web full stack à l&apos;ISTA Hay Riad. J&apos;aime créer des interfaces
-          modernes et des applications performantes. Toujours en train d&apos;apprendre et de m&apos;améliorer.
+          Apprenti en développement web full stack (frontend, backend). J&apos;aime créer des interfaces modernes et
+          des applications performantes. Toujours en train d&apos;apprendre et de m&apos;améliorer.
         </p>
       </motion.div>
     </section>
@@ -365,8 +365,10 @@ function Education() {
         <motion.div {...sectionReveal} className="content-panel timeline-card neon-frame">
           <div className="timeline-dot" />
           <div>
-            <h3 className="text-2xl font-black text-[var(--text-primary)]">Développement Digital</h3>
-            <p className="mt-2 text-lg font-semibold text-[var(--accent)]">ISTA Hay Riad</p>
+            <h3 className="text-2xl font-black text-[var(--text-primary)]">
+              Apprenti en développement web full stack
+            </h3>
+            <p className="mt-2 text-lg font-semibold text-[var(--accent)]">Frontend, Backend</p>
             <p className="mt-4 text-lg leading-8 text-[var(--text-muted)]">
               Formation complète en développement web full stack.
             </p>
