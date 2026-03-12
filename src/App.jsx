@@ -13,20 +13,22 @@ const navItems = [
 ];
 
 const skills = [
-  { title: "Frontend", items: ["HTML", "CSS", "Tailwind", "React", "Next.js"] },
-  { title: "Backend", items: ["PHP", "Laravel", "MySQL", "REST API"] },
-  { title: "Outils", items: ["Git", "GitHub", "VS Code", "Figma"] },
+  { title: "Frontend", icon: "controller", items: ["HTML", "CSS", "Tailwind", "React", "Next.js"] },
+  { title: "Backend", icon: "shield", items: ["PHP", "Laravel", "MySQL", "REST API"] },
+  { title: "Outils", icon: "trophy", items: ["Git", "GitHub", "VS Code", "Figma"] },
 ];
 
 const projects = [
   {
     title: "Application de gestion",
     desc: "Une application complète de gestion avec authentification et tableau de bord.",
+    icon: "sword",
     tech: ["React", "Laravel", "MySQL"],
   },
   {
     title: "Portfolio dynamique",
     desc: "Portfolio personnel animé avec React et Framer Motion.",
+    icon: "controller",
     tech: ["React", "Framer Motion", "Tailwind"],
   },
 ];
@@ -153,9 +155,10 @@ function Hero() {
           <div className="relative">
             <motion.span
               className="badge-game mb-6 inline-flex"
-              animate={{ y: [0, -6, 0] }}
+              animate={{ y: [0, -6, 0], boxShadow: ["0 0 0 rgba(0,0,0,0)", "0 0 24px rgba(99,90,255,0.35)", "0 0 0 rgba(0,0,0,0)"] }}
               transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
             >
+              <GameIcon type="controller" className="h-4 w-4" />
               Secure Session
             </motion.span>
             <div className="hero-copy-wrap">
@@ -172,9 +175,11 @@ function Hero() {
             </div>
             <div className="mt-8 flex flex-wrap gap-4">
               <a href="#projects" className="action-primary">
+                <GameIcon type="sword" className="h-4 w-4" />
                 Voir mes projets
               </a>
               <a href="#contact" className="action-secondary">
+                <GameIcon type="shield" className="h-4 w-4" />
                 Me contacter
               </a>
             </div>
@@ -269,6 +274,9 @@ function Skills() {
             >
               <div className="mb-5 flex items-center justify-between">
                 <h3 className="text-2xl font-black uppercase tracking-[0.08em] text-[var(--accent)]">
+                  <span className="mr-3 inline-flex align-middle">
+                    <GameIcon type={skill.icon} className="h-6 w-6" />
+                  </span>
                   {skill.title}
                 </h3>
                 <span className="text-xs font-bold uppercase tracking-[0.24em] text-[var(--text-muted)]">
@@ -307,7 +315,10 @@ function Projects() {
               className="project-card holo-panel"
             >
               <div className="flex items-center justify-between gap-4">
-                <span className="badge-game">Mission {String(index + 1).padStart(2, "0")}</span>
+                <span className="badge-game">
+                  <GameIcon type={project.icon} className="h-4 w-4" />
+                  Mission {String(index + 1).padStart(2, "0")}
+                </span>
                 <span className="text-xs font-bold uppercase tracking-[0.24em] text-[var(--text-muted)]">
                   En ligne
                 </span>
@@ -512,5 +523,43 @@ function SectionTitle({ prefix, title, accent, center = false }) {
         {title} <span className="text-[var(--accent)]">// {accent}</span>
       </h2>
     </div>
+  );
+}
+
+function GameIcon({ type, className = "h-5 w-5" }) {
+  const iconClassName = `game-icon ${className}`;
+
+  if (type === "controller") {
+    return (
+      <svg viewBox="0 0 24 24" className={iconClassName} aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <rect x="4" y="9" width="16" height="8" rx="4" />
+        <path d="M8 13h4M10 11v4M15.5 12.5h.01M18 14.5h.01" />
+      </svg>
+    );
+  }
+
+  if (type === "shield") {
+    return (
+      <svg viewBox="0 0 24 24" className={iconClassName} aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <path d="M12 3l7 3v5c0 4.5-2.7 7.6-7 10-4.3-2.4-7-5.5-7-10V6l7-3Z" />
+        <path d="M9.5 12.5l1.7 1.7 3.6-4.2" />
+      </svg>
+    );
+  }
+
+  if (type === "trophy") {
+    return (
+      <svg viewBox="0 0 24 24" className={iconClassName} aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <path d="M8 4h8v3a4 4 0 0 1-8 0V4Z" />
+        <path d="M6 5H4a2 2 0 0 0 2 4h1M18 5h2a2 2 0 0 1-2 4h-1M12 11v4M9 21h6M10 15h4v3h-4z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" className={iconClassName} aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="M14.5 4 8 10.5l5.5 5.5" />
+      <path d="m10 4 6 6-8 10-2-6 4-4Z" />
+    </svg>
   );
 }
